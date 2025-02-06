@@ -1,0 +1,73 @@
+# Logs
+logs
+wp-content/uploads/debug.log
+
+# Runtime data
+wp-content/upgrade/
+
+# Cache
+wp-content/cache/
+wp-super-cache/
+
+# Tests
+tests/
+
+# Config
+wp-config.php
+
+# Node, NPM, and Composer
+node_modules
+npm-debug.log
+composer.lock
+
+# vim swap files
+*.swp
+
+# Core files
+wp-admin/
+wp-includes/
+
+# Plugins
+wp-content/plugins/hello.php
+wp-content/plugins/index.php
+wp-content/mu-plugins/
+
+# Themes
+wp-content/themes/twenty*/
+wp-content/themes/index.php
+
+# Languages
+wp-content/languages/
+
+# Site-specific files
+wp-content/blogs.dir/
+wp-content/upgrade/
+wp-content/uploads/
+wp-content/wp-content/
+
+# BuddyPress
+wp-content/plugins/buddypress/
+
+# bbPress
+wp-content/plugins/bbpress/
+
+# Backups
+wp-content/backup-db/
+wp-content/backup/
+wp-content/backups/
+
+# Custom files
+wp-content/uploads/custom.php
+wp-content/uploads/wp-classes.php
+wp-content/uploads/wp-functions.php
+wp-content/uploads/wp-styles.php
+
+# MacOS&Windows files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+desktop.ini
