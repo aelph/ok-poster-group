@@ -125,14 +125,30 @@ class OKPOSTERFUNCTION {
 		$parameters['sig'] = $sig;
 		$parameters['access_token'] = $okposter_accesstoken;
 
-		$curlinfo = wp_remote_post(self::METHOD_URL_OK, array('body' => $parameters)); // send link, text and caption to ok.ru
+		$args = array(
+			'body' => $parameters,
+			'timeout' => 15, // увеличиваем таймаут до 15 секунд
+			'sslverify' => false // отключаем проверку SSL, если есть проблемы с сертификатами
+		);
+		$curlinfo = wp_remote_post(self::METHOD_URL_OK, $args); // send link, text and caption to ok.ru
 
 		if (is_wp_error($curlinfo)) {
 			$errMessage = $curlinfo->get_error_message();
-			echo 'Ошибка отправки: ' . $errMessage;
+			$this->logJornal($post_id, 'Ошибка отправки: ' . $errMessage, 'error');
+			return false;
 		}
 
-		$answer = json_decode($curlinfo['body'], true);
+		$body = wp_remote_retrieve_body($curlinfo);
+		if (empty($body)) {
+			$this->logJornal($post_id, 'Ошибка: Пустой ответ от сервера', 'error');
+			return false;
+		}
+
+		$answer = json_decode($body, true);
+		if (!$answer) {
+			$this->logJornal($post_id, 'Ошибка: Некорректный JSON ответ', 'error');
+			return false;
+		}
 
 		if ( (is_array($answer)) AND (isset($answer['error_code'])) ) {
 

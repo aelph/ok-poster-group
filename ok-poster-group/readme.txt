@@ -1,5 +1,5 @@
 Форк плагина автопостинга OkPoster из WordPress.
-Опробован на WordPress 6.7.1, PHP 7.4, MySQL 5.7.
+Опробован на WordPress 6.7.1, PHP 7.4, MySQL 8.0.
 
 === OK Poster Group ===
 Plugin URI: https://github.com/svmidi/okpostergroup
